@@ -19,12 +19,12 @@ jobs:
       CC_PASSWORD: ${{ secrets.CC_PASSWORD }}
       YEAR: ${{ vars.YEAR }}
     steps:
-      - name: Use Node.js 20
+      - name: Checkout
+        uses: actions/checkout@v3
+      - name: Set up Node.js
         uses: actions/setup-node@v3
         with:
           node-version: '20'
-      - name: Checkout
-        uses: actions/checkout@v3
       - name: Set up Python
         uses: actions/setup-python@v4
         with:
