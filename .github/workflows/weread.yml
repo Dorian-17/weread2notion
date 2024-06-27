@@ -4,6 +4,7 @@ on:
   workflow_dispatch:
   schedule:
     - cron: "0 22 * * *"
+
 jobs:
   sync:
     name: Sync
@@ -18,12 +19,16 @@ jobs:
       CC_PASSWORD: ${{ secrets.CC_PASSWORD }}
       YEAR: ${{ vars.YEAR }}
     steps:
-      - name: Checkout
-        uses: actions/checkout@v3 # 使用最新版本以确保支持 Node.js 20
-      - name: Set up Python
-        uses: actions/setup-python@v4 # 使用最新版本以确保支持 Node.js 20
+      - name: Use Node.js 20
+        uses: actions/setup-node@v3
         with:
-          python-version: 3.9
+          node-version: '20'
+      - name: Checkout
+        uses: actions/checkout@v3
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.9'
       - name: Install dependencies
         run: |
           python -m pip install --upgrade pip
