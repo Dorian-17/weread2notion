@@ -19,9 +19,9 @@ jobs:
       YEAR: ${{ vars.YEAR }}
     steps:
       - name: Checkout
-        uses: actions/checkout@v3
+        uses: actions/checkout@v3 # 确保使用支持 Node.js 20 的最新版本
       - name: Set up Python
-        uses: actions/setup-python@v4
+        uses: actions/setup-python@v4 # 确保使用支持 Node.js 20 的最新版本
         with:
           python-version: 3.9
       - name: Install dependencies
